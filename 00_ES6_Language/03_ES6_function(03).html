@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<!-- 箭头函数中this的使用-->
+<body>
+<script>
+  //结论： 箭头函数中的this引用的就是最近作用域中的this
+  const obj = {
+    aaa() {
+      setTimeout(function () {
+        console.log(this); //window
+      });
+      setTimeout(() => {
+        console.log(this); //obj
+      })
+    }
+  }
+</script>
+</body>
+</html>
