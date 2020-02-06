@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body></body>
+<script>
+//promise的链式调用
+  new Promise((resolve, reject) => {
+
+    //第一次网络请求的代码
+    setTimeout(() => {
+      resolve();
+    }, 1000);
+
+  }).then(() => {
+
+    //第一次拿到结果的处理代码
+    console.log("Hello");
+
+    return new Promise((resolve, reject) => {
+      //第二次网络请求的代码
+      setTimeout(() => {
+        resolve();
+      }, 1000)
+    });
+
+  }).then(() => {
+
+    //第二次处理的代码
+    console.log("Java");
+
+    return new Promise((resolve, reject) => {
+      //第三次网络请求的代码
+      setTimeout(() => {
+        resolve();
+      }, 1000)
+    });
+
+  }).then(() => {
+
+    //第三次处理的代码
+    console.log("Vue");
+  });
+</script>
+</html>
