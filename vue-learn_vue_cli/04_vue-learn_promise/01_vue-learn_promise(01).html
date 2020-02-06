@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<!-- promise是一种异步编程解决方案-->
+<body>
+
+<script>
+  //1. 使用setTimeout
+  // setTimeout(() => {
+  //   console.log("Hello");
+  // },1000);
+
+  //Promise里面要传入一个函数,包含两个参数(resolve, reject)
+  //resolve, reject 本身也是函数
+  //链式编程
+  // new Promise((resolve, reject) => {
+  //
+  //   //第一次网络请求的代码
+  //   setTimeout(() => {
+  //     resolve();
+  //   }, 1000);
+  //
+  // }).then(() => {
+  //
+  //   //第一次拿到结果的处理代码
+  //   console.log("Hello");
+  //   console.log("Hello");
+  //   console.log("Hello");
+  //   console.log("Hello");
+  //   console.log("Hello");
+  //   return new Promise((resolve, reject) => {
+  //
+  //     //第二次网络请求的代码
+  //     setTimeout(() => {
+  //       resolve();
+  //     }, 1000)
+  //
+  //   });
+  // }).then(() => {
+  //
+  //   //第二次处理的代码
+  //   console.log("Java");
+  //   console.log("Java");
+  //   console.log("Java");
+  //   console.log("Java");
+  //   console.log("Java");
+  //
+  //   return new Promise((resolve, reject) => {
+  //
+  //     //第三次网络请求的代码
+  //     setTimeout(() => {
+  //       resolve();
+  //     }, 1000)
+  //
+  //   });
+  // }).then(() => {
+  //
+  //   //第三次处理的代码
+  //   console.log("Vue");
+  //   console.log("Vue");
+  //   console.log("Vue");
+  //   console.log("Vue");
+  //   console.log("Vue");
+  // });
+
+  //一般是在进行异步操作的时候使用promise对这个异步操作进行封装
+  //promise执行过程: new -> 构造函数(1.保存一些状态信息 2. 执行传入的函数)
+  //在执行传入的回调函数是, 会传入两个参数(resolve, reject)这俩本身也是函数
+  new Promise((resolve, reject) => {
+    //这里只进行网络请求
+    setTimeout(() => {
+      //请求成功是调用resolve
+      //data是网络请求的返回值，但不在这里处理
+      resolve("Hello World");
+
+      //请求失败时调用reject()
+      reject("error message")
+    }, 1000)
+  }).then((data) => {
+    //这里来处理返回来的data值
+    console.log(data);
+    console.log(data);
+    console.log(data);
+    console.log(data);
+  }).catch( err => {
+    //reject函数会将请求失败的参数传递到这个函数里面进行处理
+    console.log(err);
+  });
+</script>
+</body>
+</html>
