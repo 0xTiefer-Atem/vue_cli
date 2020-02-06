@@ -1,13 +1,26 @@
 <template>
+<!--  在使用插槽时在外面包一层div元素,在这里面定义自己的类或者各种方法-->
   <div class="tab-bar-item">
-    <slot name="item-icon"></slot>
-    <slot name="item-name"></slot>
+    <div v-if="!isActive">
+      <slot name="item-icon"></slot>
+    </div>
+    <div v-else>
+      <slot name="item-icon-active"></slot>
+    </div>
+    <div :class="{active: isActive}">
+      <slot name="item-name"></slot>
+    </div>
   </div>
 </template>
 
 <script>
   export default {
-    name: "TabBarItem"
+    name: "TabBarItem",
+    data() {
+      return {
+        isActive: false
+      }
+    }
   }
 </script>
 
@@ -26,5 +39,8 @@
     margin-top: 4px;
     vertical-align: middle;
     margin-bottom: 2px;
+  }
+  .active {
+    color: palevioletred;
   }
 </style>
