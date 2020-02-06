@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  <!-- promise的另外处理形式-->
+  new Promise((resolve, reject) => {
+    // resolve("Vuejs");
+    reject("error");
+  }).then(data => {
+    //resolve调这个函数
+    console.log(data);
+  }, err => {
+    //reject调这个函数
+    console.log(err);
+  });
+</script>
+</html>
