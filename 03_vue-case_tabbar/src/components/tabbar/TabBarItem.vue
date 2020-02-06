@@ -1,6 +1,6 @@
 <template>
 <!--  在使用插槽时在外面包一层div元素,在这里面定义自己的类或者各种方法-->
-  <div class="tab-bar-item">
+  <div class="tab-bar-item" @click="itemClick">
     <div v-if="!isActive">
       <slot name="item-icon"></slot>
     </div>
@@ -16,9 +16,17 @@
 <script>
   export default {
     name: "TabBarItem",
+    props: {
+      link: String
+    },
     data() {
       return {
         isActive: false
+      }
+    },
+    methods: {
+      itemClick() {
+        this.$router.replace(this.link)
       }
     }
   }
