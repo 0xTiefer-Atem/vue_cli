@@ -1,7 +1,7 @@
 <template>
   <div class="tab-bar-item">
-    <img src="../../assets/img/tabbar/home.svg" alt="">
-    <div>首页</div>
+    <slot name="item-icon"></slot>
+    <slot name="item-name"></slot>
   </div>
 </template>
 
@@ -25,5 +25,6 @@
     height: 24px;
     margin-top: 4px;
     vertical-align: middle;
+    margin-bottom: 2px;
   }
 </style>
