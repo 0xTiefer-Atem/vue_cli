@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body></body>
+<script>
+  //promise的链式调用 2
+  //需求  网络请求结果: aaa -> 自己处理(10行)
+  //处理: 1. 拼接上111 -> 自己处理(10行) 以此类推
+  // new Promise((resolve, reject) => {
+  //   setTimeout(() => {
+  //     resolve("aaa")
+  //   }, 1000);
+  // }).then(res => {
+  //
+  //   //1. 先自己处理10行
+  //   console.log(res, "第一层处理10行代码");
+  //
+  //   //2.拼接,然后向下抛
+  //   res = res + "111";
+  //   new Promise((resolve, reject) => {
+  //     resolve(res);
+  //   });
+  //
+  // }).then(res => {
+  //
+  //   //1. 自己处理
+  //   console.log(res, "第二层处理10行代码");
+  //   //2.拼接,想下抛
+  //   res = res + "222";
+  //   new Promise((resolve, reject) => {
+  //     resolve(res);
+  //   });
+  //
+  // }).then(res => {
+  //
+  //   //1. 自己处理
+  //   console.log(res, "第三层处理10行");
+  // });
+
+
+  //链式的简写
+  // new Promise((resolve, reject) => {
+  //   setTimeout(() => {
+  //     resolve("aaa")
+  //   }, 1000);
+  // }).then(res => {
+  //
+  //   //1. 先自己处理10行
+  //   console.log(res, "第一层处理10行代码");
+  //
+  //   //2.拼接,然后向下抛
+  //   res = res + "111";
+  //   return  Promise.resolve(res);
+  //
+  // }).then(res => {
+  //
+  //   //1. 自己处理
+  //   console.log(res, "第二层处理10行代码");
+  //   //2.拼接,想下抛
+  //   res = res + "222";
+  //   return  Promise.resolve(res)
+  //
+  // }).then(res => {
+  //
+  //   //1. 自己处理
+  //   console.log(res, "第三层处理10行");
+  // });
+
+
+  //再简写 省略Promise.resolve
+  //在then函数里面直接return,promise内部会自动传入下一个then函数里面
+  // new Promise((resolve, reject) => {
+  //   setTimeout(() => {
+  //     resolve("aaa")
+  //   }, 1000);
+  // }).then(res => {
+  //
+  //   //1. 先自己处理10行
+  //   console.log(res, "第一层处理10行代码");
+  //
+  //   //2.拼接,然后向下抛
+  //   res = res + "111";
+  //   return  res;
+  //
+  // }).then(res => {
+  //
+  //   //1. 自己处理
+  //   console.log(res, "第二层处理10行代码");
+  //   //2.拼接,想下抛
+  //   res = res + "222";
+  //   return  res
+  //
+  // }).then(res => {
+  //
+  //   //1. 自己处理
+  //   console.log(res, "第三层处理10行");
+  // });
+
+
+  //调用失败的情况的简写
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("aaa")
+    }, 1000);
+  }).then(res => {
+
+    //1. 先自己处理10行
+    console.log(res, "第一层处理10行代码");
+
+    //2.拼接,然后向下抛
+    res = res + "111";
+
+    //利用reject抛出异常
+    // return  Promise.reject("error message");
+
+    //手动抛出异常
+    throw "error message"
+
+  }).then(res => {
+
+    //1. 自己处理
+    console.log(res, "第二层处理10行代码");
+    //2.拼接,想下抛
+    res = res + "222";
+    return  Promise.resolve(res)
+
+  }).then(res => {
+
+    //1. 自己处理
+    console.log(res, "第三层处理10行");
+  }).catch(err => {
+    console.log(err);
+  });
+</script>
+</html>
