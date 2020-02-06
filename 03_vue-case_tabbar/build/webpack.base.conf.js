@@ -24,6 +24,8 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
+
+    //起别名  例子看MainTabBar.vue
     alias: {
       '@': resolve('src'),
     }
