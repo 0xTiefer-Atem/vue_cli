@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body></body>
+<script>
+  //promise的all方法使用
+  //同时处理两个网络请求
+  //当两个请求都完成后内部将结果放进数组, 继续调用then
+  Promise.all([
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("data1")
+        }, 1000)
+      }),
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("data2")
+        }, 3000);
+      })
+  ]).then(results => {
+    //results是一个数组
+    console.log(results[0], results[1]);
+  })
+</script>
+</html>
