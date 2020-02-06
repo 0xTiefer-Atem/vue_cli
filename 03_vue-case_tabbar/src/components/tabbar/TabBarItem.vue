@@ -7,7 +7,7 @@
     <div v-else>
       <slot name="item-icon-active"></slot>
     </div>
-    <div :class="{active: isActive}">
+    <div :style="activeStyle">
       <slot name="item-name"></slot>
     </div>
   </div>
@@ -17,11 +17,25 @@
   export default {
     name: "TabBarItem",
     props: {
-      link: String
+      link: String,
+      activeColor: {
+        type: String,
+        default: 'palevioletred'
+      }
     },
     data() {
       return {
-        isActive: false
+        // isActive: false
+      }
+    },
+    computed: {
+      isActive() {
+        //利用当前活跃的路由与当前link存入的数值进行比较,有则当前控件为活跃
+        return this.$route.path.indexOf(this.link) !== -1;
+      },
+      //通过计算属性，动态绑定元素的style
+      activeStyle() {
+        return this.isActive ? {color: this.activeColor} : {}
       }
     },
     methods: {
