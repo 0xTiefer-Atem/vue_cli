@@ -90,7 +90,7 @@ http {
 
     #设定负载均衡的服务器列表
 
-     upstream mysvr {
+    upstream mysvr {
 
     #weigth参数表示权值，权值越高被分配到的几率越大
 
@@ -118,8 +118,6 @@ http {
 
         server_name  www.xx.com;
 
- 
-
         #设定本虚拟主机的访问日志
 
         access_log  logs/www.xx.com.access.log  main;
@@ -134,19 +132,11 @@ http {
 
           index index.php index.html index.htm;   #定义首页索引文件的名称
 
- 
-
           proxy_pass  http://mysvr ;#请求转向mysvr 定义的服务器列表
-
- 
 
           #以下是一些反向代理的配置可删除.
 
- 
-
           proxy_redirect off;
-
- 
 
           #后端的Web服务器可以通过X-Forwarded-For获取用户真实IP
 
@@ -174,12 +164,6 @@ http {
 
           proxy_temp_file_write_size 64k;  #设定缓存文件夹大小，大于这个值，将从upstream服务器传
 
- 
-
- 
-
- 
-
     # 定义错误提示页面
 
     error_page   500 502 503 504 /50x.html;  
@@ -189,8 +173,6 @@ http {
         root   /root;
 
     }
-
- 
 
     #静态文件，nginx自己处理
 
