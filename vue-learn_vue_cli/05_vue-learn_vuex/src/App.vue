@@ -4,19 +4,24 @@
     <button @click="counter++">+</button>
     <h2>{{counter}}</h2>
     <button @click="counter--">-</button>
+    <hello-vuex/>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'App',
-  data() {
-    return {
-      message: "App组件",
-      counter: 0
+  import HelloVuex from "./components/HelloVuex";
+  export default {
+    name: 'App',
+    components: {
+      HelloVuex
+    },
+    data() {
+      return {
+        message: "App组件",
+        counter: 0
+      }
     }
   }
-}
 </script>
 
 <style>
