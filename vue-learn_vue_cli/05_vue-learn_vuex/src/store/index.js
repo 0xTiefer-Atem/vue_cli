@@ -9,6 +9,24 @@ Vue.use(Vuex);
 //3. 创建Vuex对象
 const store = new Vuex.Store({
 
+  //里面放入的对象参数
+
+  //存放一些变量的值
+  state: {
+    counter: 1000
+  },
+  mutations: {
+
+  },
+  actions: {
+
+  },
+  getters: {
+
+  },
+  modules: {
+
+  }
 });
 
 //4. 导出Vuex创建的对象
