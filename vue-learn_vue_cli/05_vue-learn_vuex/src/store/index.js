@@ -20,7 +20,12 @@ const store = new Vuex.Store({
       {id: 2, name: 'kobe', age: 34},
       {id: 3, name: 'james', age: 29},
       {id: 4, name: 'curry', age: 10}
-    ]
+    ],
+    info: {
+      name: 'weer',
+      age: 18,
+      height: 1.78
+    }
   },
 
   //定义一些对state里面变量的方法函数
@@ -52,8 +57,16 @@ const store = new Vuex.Store({
 
     }
   },
+  //官方强调不能再mutations，里进行异步操作
+  //推荐actions，类似mutations,但是是用来替代mutations进行异步操作的
   actions: {
-
+    //context 就相当于store 对象
+    aUpdateSate(context, payload) {
+      setTimeout(() => {
+        context.commit('');
+        console.log(payload);
+      }, 1000)
+    }
   },
   getters: {
     //相当于计算属性，对state里的变量进行某些操作后再返回

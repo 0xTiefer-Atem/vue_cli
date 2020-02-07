@@ -59,7 +59,9 @@
           name: 'qwe',
           age: 13
         }
-        this.$store.commit('addStudent', stu)
+        // this.$store.commit('addStudent', stu)
+        //调用store里的actions函数 也可以在后面传递参数
+        this.$store.dispatch('aUpdateSate', '参数');
       }
     }
   }
