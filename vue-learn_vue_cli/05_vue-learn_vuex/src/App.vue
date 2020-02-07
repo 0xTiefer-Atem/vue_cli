@@ -7,6 +7,7 @@
     <button @click="subCount">-</button>
     <button @click="addCount1(5)">+5</button>
     <button @click="addCount1(10)">+10</button>
+    <button @click="addStu">添加学生</button>
 
     <h4>------------App  getter相关内容----------------</h4>
     <h2>{{$store.getters.powerCounter}}</h2>
@@ -41,6 +42,14 @@
       },
       addCount1(num) {
         this.$store.commit('addCount', num)
+      },
+      addStu() {
+        const stu = {
+          id: 5,
+          name: 'qwe',
+          age: 13
+        }
+        this.$store.commit('addStudent', stu)
       }
     }
   }
