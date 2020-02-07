@@ -6,6 +6,12 @@
     <h2>{{$store.state.counter}}</h2>
     <button @click="subCount">-</button>
 
+    <h4>------------App  getter相关内容----------------</h4>
+    <h2>{{$store.getters.powerCounter}}</h2>
+    <h2>{{$store.getters.more20stu}}</h2>
+    <h2>{{$store.getters.more20stuLength}}</h2>
+    <h2>{{$store.getters.moreAgeStu(8)}}</h2>
+
     <h4>------------HelloVuex内容----------------</h4>
     <hello-vuex/>
   </div>
