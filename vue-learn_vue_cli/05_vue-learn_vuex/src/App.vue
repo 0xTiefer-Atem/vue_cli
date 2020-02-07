@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    {{message}}
+    <h2>{{message}}</h2>
+    <button @click="counter++">+</button>
+    <h2>{{counter}}</h2>
+    <button @click="counter--">-</button>
   </div>
 </template>
 
@@ -9,7 +12,8 @@ export default {
   name: 'App',
   data() {
     return {
-      message: "App组件"
+      message: "App组件",
+      counter: 0
     }
   }
 }
