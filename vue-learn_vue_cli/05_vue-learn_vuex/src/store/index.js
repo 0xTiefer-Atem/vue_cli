@@ -2,6 +2,7 @@
 //1. 引入插件
 import Vue from 'vue'
 import Vuex from 'vuex'
+import {INCREMENT} from './mutations-types'
 
 //2. 使用Vue插件
 Vue.use(Vuex);
@@ -42,6 +43,13 @@ const store = new Vuex.Store({
     },
     addStudent(state, stu) {
       state.students.push(stu)
+
+      //当动态的往state里面添加数据时，
+      // 利用 Vue.set(); 可以实现响应式添加数据
+      // Vue.delete(); 可以实现动态删除数据
+    },
+    [INCREMENT]() {
+
     }
   },
   actions: {
