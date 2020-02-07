@@ -41,7 +41,15 @@
         this.$store.commit('sub')
       },
       addCount1(num) {
-        this.$store.commit('addCount', num)
+        //普通提交风格
+        // this.$store.commit('addCount', num)
+
+        //特殊提交风格
+        this.$store.commit({
+          type: 'addCount',
+          num
+        })
+
       },
       addStu() {
         const stu = {

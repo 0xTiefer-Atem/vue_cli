@@ -33,8 +33,12 @@ const store = new Vuex.Store({
     },
 
     //额外参数叫做payload 载荷
-    addCount(state, count) {
-      state.counter += count
+    addCount(state, payLoad) {
+      //普通风格操作
+      // state.counter += payLoad;
+
+      //特殊风格操作
+      state.counter += payLoad.num;
     },
     addStudent(state, stu) {
       state.students.push(stu)
