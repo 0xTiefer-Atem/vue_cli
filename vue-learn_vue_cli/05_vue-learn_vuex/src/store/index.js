@@ -15,8 +15,16 @@ const store = new Vuex.Store({
   state: {
     counter: 1000
   },
-  mutations: {
 
+  //定义一些对state里面变量的方法函数
+  mutations: {
+    //上面的state是自动往这里面的函数里传入的
+    add(state) {
+      state.counter++
+    },
+    sub(state) {
+      state.counter--
+    }
   },
   actions: {
 
