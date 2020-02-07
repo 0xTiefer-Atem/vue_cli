@@ -30,6 +30,9 @@ const store = new Vuex.Store({
     },
     sub(state) {
       state.counter--
+    },
+    addCount(state, count) {
+      state.counter += count
     }
   },
   actions: {

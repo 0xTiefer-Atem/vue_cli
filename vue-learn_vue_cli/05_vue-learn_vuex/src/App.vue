@@ -5,6 +5,8 @@
     <button @click="addCount">+</button>
     <h2>{{$store.state.counter}}</h2>
     <button @click="subCount">-</button>
+    <button @click="addCount1(5)">+5</button>
+    <button @click="addCount1(10)">+10</button>
 
     <h4>------------App  getter相关内容----------------</h4>
     <h2>{{$store.getters.powerCounter}}</h2>
@@ -36,6 +38,9 @@
       },
       subCount() {
         this.$store.commit('sub')
+      },
+      addCount1(num) {
+        this.$store.commit('addCount', num)
       }
     }
   }
