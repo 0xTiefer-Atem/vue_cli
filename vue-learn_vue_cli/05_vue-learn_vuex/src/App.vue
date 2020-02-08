@@ -1,5 +1,13 @@
 <template>
   <div id="app">
+    <h3>------------modules内容-------------</h3>
+    <h2>{{$store.state.a.name}}</h2>
+    <button @click="upDateName">修改名字</button>
+<!--    modules里getters的用法-->
+    <h3>{{$store.getters.fullName}}</h3>
+    <h3>{{$store.getters.fullName1}}</h3>
+
+
     <h3>------------App内容-------------</h3>
     <h2>{{message}}</h2>
     <button @click="addCount">+</button>
@@ -62,6 +70,10 @@
         // this.$store.commit('addStudent', stu)
         //调用store里的actions函数 也可以在后面传递参数
         this.$store.dispatch('aUpdateSate', '参数');
+      },
+      //模块里mutations的用法
+      upDateName() {
+        this.$store.commit('updateName', 'hahaha')
       }
     }
   }

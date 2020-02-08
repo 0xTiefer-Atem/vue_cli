@@ -7,6 +7,33 @@ import {INCREMENT} from './mutations-types'
 //2. 使用Vue插件
 Vue.use(Vuex);
 
+const moduleA = {
+  state: {
+    name: 'asd'
+  },
+  mutations: {
+    updateName(state, payload) {
+      state.name = payload
+    }
+  },
+  actions: {
+    update(context) {
+      //这里的commit只管自己module里的mutations里的方法
+      context.commit('updateName', 'wangwu');
+    }
+  },
+  getters: {
+    fullName(state) {
+      return state.name + '12qwr'
+    },
+
+    //在模块中引用根state里的数据,传入参数rootState
+    fullName1(state, getters, rootState) {
+      return state.name + rootState.counter
+    }
+  }
+};
+
 //3. 创建Vuex对象
 const store = new Vuex.Store({
 
@@ -94,7 +121,12 @@ const store = new Vuex.Store({
     }
 
   },
+
+  //vue在运行时会自动将a模块加载到state中
   modules: {
+    //分模块进行操作
+    //当state里的数据过多，分类抽离出来，各自进行操作
+    a: moduleA
 
   }
 });
