@@ -63,29 +63,41 @@ axios.defaults.timeout = 5000
 
 
 //创建对应的axios实例
-const instance1 = axios.create({
-  baseURL: 'url1',
-  timeout: 5000
-});
+// const instance1 = axios.create({
+//   baseURL: 'url1',
+//   timeout: 5000
+// });
+//
+// instance1({
+//   url: '地址资源1'
+// }).then(res => {
+//   //处理结果
+// });
 
-instance1({
-  url: '地址资源1'
+
+// const instance2 = axios.create({
+//   baseURL: 'url2',
+//   timeout: 7000
+// });
+
+// instance2({
+//   url: '资源地址2',
+//   method: 'post',
+//   data: 'json数据'
+// }).then(res => {
+//   console.log(res);
+// })
+
+
+//封装request请求模块
+import {request} from './network/request'
+request({
+  url: '资源地址'
 }).then(res => {
-  //处理结果
-});
 
-const instance2 = axios.create({
-  baseURL: 'url2',
-  timeout: 7000
-});
+}).catch(err => {
 
-instance2({
-  url: '资源地址2',
-  method: 'post',
-  data: 'json数据'
-}).then(res => {
-  console.log(res);
-})
+});
 
 Vue.config.productionTip = false
 
