@@ -134,3 +134,14 @@ const store = new Vuex.Store({
 //4. 导出Vuex创建的对象
 export default store
 //5. 在main.js中挂在store
+
+
+//补充: 对象的解构
+const  obj = {
+  name: 'asd',
+  age: 18
+};
+
+const {name, age} = obj;
+console.log(name);
+console.log(age);
