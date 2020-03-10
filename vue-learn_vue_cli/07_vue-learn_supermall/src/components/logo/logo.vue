@@ -4,7 +4,7 @@
       <!--    标题和添加按钮-->
       <div>
         <span>底部logo配置</span>
-        <el-button @click="NewLogo()">添加</el-button>
+        <el-button size="small" @click="NewLogo()">添加</el-button>
       </div>
 
       <!--    配置底部logo的表格-->
@@ -51,20 +51,23 @@
                   prop=""
                   label="显示时间">
             <template slot-scope="scope">
-              {{scope.row.startTime}}至{{scope.row.endTime}}
+              {{scope.row.startTime}}<br>
+              至<br>
+              {{scope.row.endTime}}
             </template>
           </el-table-column>
           <el-table-column
                   prop=""
                   label="操作">
             <template slot-scope="scope">
-              <el-button @click="EditLogo()">编辑</el-button>
-              <el-button @click="DeleteInfo(scope.$index , scope.row)">删除</el-button>
+              <el-button size="mini" @click="EditLogo()">编辑</el-button>
+              <el-button size="mini" @click="DeleteInfo(scope.$index , scope.row)">删除</el-button>
             </template>
           </el-table-column>
         </el-table>
         <LogoAdd v-if="addDialog" ref="addLogo" @refreshDataList="getDataList"></LogoAdd>
-        <LogoEdit v-if="editDialog" ref="editLogo" @refreshDataList="getDataList"></LogoEdit>
+<!--        没有具体界面没写-->
+<!--        <LogoEdit v-if="editDialog" ref="editLogo" @refreshDataList="getDataList"></LogoEdit>-->
       </div>
     </el-card>
   </div>
@@ -83,7 +86,18 @@
         page: 1,
         size: 20,
         //赛事logo配置对象数组
-        dataList: [],
+        dataList: [
+            {
+              id: '123asfhgtru',
+              startTime: '123123123',
+              clogo: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1583818574856&di=90fb538b674ae4e39c6d2b0da9f88e02&imgtype=0&src=http%3A%2F%2Fbpic.588ku.com%2Felement_origin_min_pic%2F16%2F08%2F20%2F2357b8781a8b798.jpg%2521%2Ffwfh%2F804x804%2Fquality%2F90%2Funsharp%2Ftrue%2Fcompress%2Ftrue',
+              cname: 'xxx',
+              homeName: 'aaa',
+              awayName: 'bbb',
+              info: 'asdqwerty',
+              endTime: 'asdasdads'
+            }
+            ],
 
         //加载
         dataListLoading: false,
@@ -128,6 +142,7 @@
       DeleteInfo(index, item) {
         //要删除的id
         let id = item.id;
+        console.log(id);
         //http接口
       },
 
