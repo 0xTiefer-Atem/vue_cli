@@ -6,7 +6,7 @@ user www-data;    
 
 worker_processes  1;
 
- 
+ #
 
 #全局错误日志及PID文件
 
